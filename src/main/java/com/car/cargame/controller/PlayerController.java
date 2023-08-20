@@ -21,7 +21,9 @@ public class PlayerController {
 
 
     @GetMapping("/")
-    public  ResponseEntity<List<Player>> getStarter(){
+    public synchronized ResponseEntity<List<Player>> getStarter(){
+        playerservice.start1();
+        playerservice.start2();
         return playerservice.getAllPlayers();
     }
 
